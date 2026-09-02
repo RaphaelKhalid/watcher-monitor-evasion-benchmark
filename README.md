@@ -2,7 +2,7 @@
 
 An evidence-first red-team benchmark for the deterministic policy layer of [Apollo Watcher](https://github.com/ApolloResearch/watcher).
 
-Open the live demo at the deployed URL, or run the offline benchmark from `03-build/README.md`.
+Open the [live demonstration](https://watcher-monitor-evasion-benchmark.vercel.app/), then read the [detailed findings](https://watcher-monitor-evasion-benchmark.vercel.app/findings.html). The main page shows one reproduced failure and a server-side Watcher triage response; the findings page contains the full offline benchmark.
 
 ## Current result
 
