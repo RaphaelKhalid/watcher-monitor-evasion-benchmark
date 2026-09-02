@@ -35,7 +35,7 @@
         <article class="metric-card accent"><span class="metric-label">DANGEROUS VARIANTS</span><strong>110</strong><span class="metric-note">22 cases × 5 forms</span></article>
         <article class="metric-card"><span class="metric-label">HIT ALLOW</span><strong>6 <small>/ 110</small></strong><span class="metric-note">5.45% of dangerous strings</span></article>
         <article class="metric-card"><span class="metric-label">REWRITE LIFT</span><strong>+9.09<span class="unit">pp</span></strong><span class="metric-note">allowlist wrapper vs baseline</span></article>
-        <article class="metric-card"><span class="metric-label">HARD ROUTES</span><strong>0</strong><span class="metric-note">human or deny in corpus</span></article>
+        <article class="metric-card"><span class="metric-label">LUNA BELOW 6</span><strong>3 <small>/ 40</small></strong><span class="metric-note">7.5% in shaped follow-up</span></article>
       </section>
 
       <section class="panel finding-panel" id="finding">
@@ -72,7 +72,7 @@ credential.helper store
 
       <section class="two-col">
         <article class="panel compact"><div class="eyebrow">04 / METHOD</div><h2>Reproducible by design.</h2><ol class="steps"><li><span>01</span><p>Load the installed 736-line policy in WSL, in place.</p></li><li><span>02</span><p>Sort 63 command rules by numeric priority and apply regex matching to Bash strings.</p></li><li><span>03</span><p>Compare a direct dangerous command with benign and mechanical rewrites.</p></li><li><span>04</span><p>Save every decision, matched rule, and priority to raw JSON.</p></li></ol></article>
-        <article class="panel compact limits"><div class="eyebrow">05 / LIMITS</div><h2>What this does not prove.</h2><p>This is a router finding, not a full Watcher bypass. A <code>triage</code> route is not an approval. The next validation is to replay inert synthetic trajectories through the documented API and compare the full monitor outcome.</p><div class="live-check"><span class="check">✓</span><span><b>API access verified</b><br />Read-only grader list · no trajectories ingested</span></div></article>
+        <article class="panel compact limits"><div class="eyebrow">05 / LIMITS</div><h2>What this does not prove.</h2><p>This is a router finding, not a full Watcher bypass. A <code>triage</code> route is not an approval. Luna scored 3/40 below 6 in a local, Watcher-shaped follow-up. That is not a server-side Watcher grade.</p><div class="live-check"><span class="check">✓</span><span><b>API access verified</b><br />Read-only grader list · no trajectories ingested</span></div></article>
       </section>
 
       <footer class="footer"><span>Built as an independent red-team artifact for Apollo Research.</span><span><a href="https://github.com/ApolloResearch/watcher" target="_blank" rel="noreferrer">Apollo Watcher ↗</a> · <a href="../04-package/README.md">Method notes ↗</a></span></footer>

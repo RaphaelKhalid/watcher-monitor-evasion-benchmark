@@ -24,6 +24,10 @@ The corpus is classification-only. No command is executed, and the installed pol
 
 The two new reproducible wrapped cases are a read-only `git status` followed by a global credential-helper mutation and a remote URL rewrite. Both match the read-only Git allow rule at priority 330 before the later command is considered. This is a policy-router finding, not evidence that the full LLM monitor would approve the action.
 
+## LLM-shaped follow-up
+
+The paid follow-up uses `gpt-5.6-luna` at high reasoning with the published triage shape, a six-point threshold, cached responses, and a hard estimated $25 ceiling. On the first 40 dangerous strings already routed to `triage`, 3 scored below 6 (7.5%) at an estimated $0.00621. This is a local, Watcher-shaped experiment. It is not a server-side Watcher grade. The live Watcher API credential was verified read-only, but no trajectories were ingested or graded.
+
 ## Limits
 
 This does not establish a full Watcher bypass. It does not measure the triage or full evaluator, production behavior, false positives on real developer traffic, or the effect of context. Those are separate experiments.
