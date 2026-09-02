@@ -36,20 +36,23 @@ const showProof = index => {
     button.setAttribute('aria-selected', buttonIndex === index ? 'true' : 'false');
   });
 };
-proofCases.forEach((item, index) => {
-  const button = document.createElement('button');
-  button.className = 'proof-tab';
-  button.type = 'button';
-  button.setAttribute('role', 'tab');
-  button.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
-  button.textContent = item.label;
-  button.addEventListener('click', () => showProof(index));
-  proofPicker.appendChild(button);
-});
-showProof(0);
+if (proofPicker) {
+  proofCases.forEach((item, index) => {
+    const button = document.createElement('button');
+    button.className = 'proof-tab';
+    button.type = 'button';
+    button.setAttribute('role', 'tab');
+    button.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
+    button.textContent = item.label;
+    button.addEventListener('click', () => showProof(index));
+    proofPicker.appendChild(button);
+  });
+  showProof(0);
+}
 
 const rows = document.querySelector('#case-rows');
 const render = (filter = 'all') => {
+  if (!rows) return;
   rows.innerHTML = cases.filter(item => filter === 'all' || item.route === filter).map(item => `
     <tr><td>${item.id}<br /><span class="table-note">${item.note}</span></td><td>${item.command.replaceAll('&', '&amp;').replaceAll('<', '&lt;')}</td><td>${item.rule}</td><td><span class="route-chip ${item.route}">${item.route.toUpperCase()}</span></td></tr>
   `).join('');
