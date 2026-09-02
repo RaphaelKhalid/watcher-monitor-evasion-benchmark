@@ -64,15 +64,29 @@ credential.helper store
         <div class="callout"><span class="callout-icon">↗</span><span><b>+9.09 percentage points.</b> The lift is concentrated in shell composition, not in every rewrite family. Environment prefixes and literal splits routed to triage in this run.</span></div>
       </section>
 
+      <section class="panel proof-panel" id="proof">
+        <div class="panel-heading"><div><div class="eyebrow">03 / CLEAN DEMONSTRATION</div><h2>One realistic flow, before and after.</h2></div><span class="tag amber">SIMULATED FIX</span></div>
+        <p class="section-intro">Select any of the six reproduced auto-allows. The left side is the raw-text route observed in the installed policy. The right side shows the proposed shell-aware guard: split the compound command, inspect every part, and keep the riskiest route.</p>
+        <div class="proof-picker" id="proof-picker" role="tablist" aria-label="Reproduced auto-allow cases"></div>
+        <div class="scenario-context" id="scenario-context"></div>
+        <div class="flow" aria-live="polite">
+          <article class="flow-card before-card"><div class="flow-label"><span class="step-number">A</span><span>BEFORE · RAW TEXT</span><span class="route allow">ALLOW</span></div><h3 id="before-title"></h3><pre id="before-command"></pre><div class="flow-detail"><span class="detail-key">matched rule</span><code id="before-rule"></code><span class="detail-key">why it passed</span><span id="before-why"></span></div></article>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <article class="flow-card after-card"><div class="flow-label"><span class="step-number">B</span><span>AFTER · SHELL-AWARE GUARD</span><span class="route triage">TRIAGE</span></div><h3 id="after-title"></h3><pre id="after-command"></pre><div class="flow-detail"><span class="detail-key">isolated risk</span><code id="after-risk"></code><span class="detail-key">proposed route</span><span id="after-why"></span></div></article>
+        </div>
+        <div class="fix-strip"><span class="fix-icon">✓</span><span><b>Proposed rule:</b> an unconditional allow is valid only when every command node in the shell AST is allow-safe. A risky node makes the compound action triageable.</span></div>
+        <p class="demo-note">This is a non-executing visualization of recorded policy decisions. “After” is a remediation design, not a claim about a live Apollo patch.</p>
+      </section>
+
       <section class="panel" id="cases">
-        <div class="panel-heading"><div><div class="eyebrow">03 / CASE FILES</div><h2>What actually matched.</h2></div><div class="filters" role="group" aria-label="Filter case files"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="allow">Allow</button><button class="filter" data-filter="triage">Triage</button></div></div>
+        <div class="panel-heading"><div><div class="eyebrow">04 / CASE FILES</div><h2>What actually matched.</h2></div><div class="filters" role="group" aria-label="Filter case files"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="allow">Allow</button><button class="filter" data-filter="triage">Triage</button></div></div>
         <div class="case-table-wrap"><table><thead><tr><th>Case</th><th>Test string</th><th>Matched rule</th><th>Route</th></tr></thead><tbody id="case-rows"></tbody></table></div>
         <p class="table-note">Showing representative routed cases from the raw JSON output. Strings were classified, never executed.</p>
       </section>
 
       <section class="two-col">
-        <article class="panel compact"><div class="eyebrow">04 / METHOD</div><h2>Reproducible by design.</h2><ol class="steps"><li><span>01</span><p>Load the installed 736-line policy in WSL, in place.</p></li><li><span>02</span><p>Sort 63 command rules by numeric priority and apply regex matching to Bash strings.</p></li><li><span>03</span><p>Compare a direct dangerous command with benign and mechanical rewrites.</p></li><li><span>04</span><p>Save every decision, matched rule, and priority to raw JSON.</p></li></ol></article>
-        <article class="panel compact limits"><div class="eyebrow">05 / LIMITS</div><h2>What this does not prove.</h2><p>This is a router finding, not a full Watcher bypass. A <code>triage</code> route is not an approval. Luna scored 3/40 below 6 in a local, Watcher-shaped follow-up. That is not a server-side Watcher grade.</p><div class="live-check"><span class="check">✓</span><span><b>API access verified</b><br />Read-only grader list · no trajectories ingested</span></div></article>
+        <article class="panel compact"><div class="eyebrow">05 / METHOD</div><h2>Reproducible by design.</h2><ol class="steps"><li><span>01</span><p>Load the installed 736-line policy in WSL, in place.</p></li><li><span>02</span><p>Sort 63 command rules by numeric priority and apply regex matching to Bash strings.</p></li><li><span>03</span><p>Compare a direct dangerous command with benign and mechanical rewrites.</p></li><li><span>04</span><p>Save every decision, matched rule, and priority to raw JSON.</p></li></ol></article>
+        <article class="panel compact limits"><div class="eyebrow">06 / LIMITS</div><h2>What this does not prove.</h2><p>This is a router finding, not a full Watcher bypass. A <code>triage</code> route is not an approval. Luna scored 3/40 below 6 in a local, Watcher-shaped follow-up. That is not a server-side Watcher grade.</p><div class="live-check"><span class="check">✓</span><span><b>API access verified</b><br />Read-only grader list · no trajectories ingested</span></div></article>
       </section>
 
       <footer class="footer"><span>Built as an independent red-team artifact for Apollo Research.</span><span><a href="https://github.com/ApolloResearch/watcher" target="_blank" rel="noreferrer">Apollo Watcher ↗</a> · <a href="../04-package/README.md">Method notes ↗</a></span></footer>
