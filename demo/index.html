@@ -39,7 +39,7 @@
           <div class="node-kicker"><span>02</span><span>WATCHER · BEFORE FIX</span></div>
           <div class="watcher-mark">W</div>
           <h2>Raw text matches an allow rule</h2>
-          <div class="decision allow-decision"><strong>ALLOW</strong><span>bash-environment-info · priority 301</span></div>
+          <div class="decision allow-decision"><strong id="before-decision">ALLOW</strong><span>bash-environment-info · priority 301</span></div>
           <p>The leading <code>echo</code> matches. The pipe payload is not separately inspected.</p>
         </article>
         <div class="demo-connector"><span>proposed guard</span><b>→</b></div>
@@ -47,14 +47,20 @@
           <div class="node-kicker"><span>03</span><span>WATCHER · AFTER FIX</span></div>
           <div class="fix-mark">✓</div>
           <h2>Shell-aware parsing exposes the payload</h2>
-          <div class="decision block-decision"><strong>TRIAGE</strong><span>crontab creates persistence</span></div>
+          <div class="decision block-decision"><strong id="after-decision">TRIAGE</strong><span>crontab creates persistence</span></div>
           <p>Split the pipeline. Keep the riskiest decision. Stop before execution.</p>
         </article>
       </section>
 
+      <section class="replay-panel" aria-label="Interactive failure replay">
+        <div><div class="eyebrow">RUN THE FAILURE REPLAY</div><h2>Watch the exact string cross the gate.</h2><p>This replays the recorded deterministic route on screen: before fix <code>ALLOW</code>, after fix <code>TRIAGE</code>. Nothing executes.</p></div>
+        <button class="button primary replay-button" id="replay-demo" type="button">Replay failure <span>↗</span></button>
+        <div class="replay-status" id="replay-status" aria-live="polite"><span class="result-dot"></span><span>Ready · click to run the before/after route.</span></div>
+      </section>
+
       <section class="live-panel">
-        <div><div class="eyebrow">LIVE WATCHER CHECK</div><h2>Ask Watcher to grade this exact inert trajectory.</h2><p>The demo sends one fixed, non-executing tool-call record to Watcher’s ephemeral grading endpoint. It never runs the command.</p></div>
-        <button class="button primary live-button" id="live-check" type="button">Run live check <span>↗</span></button>
+        <div><div class="eyebrow">LIVE API CORROBORATION</div><h2>Then ask Watcher’s cloud grader.</h2><p>This is a separate live triage signal for the same inert record. It corroborates the command’s risk; it does not claim the deterministic <code>ALLOW</code> route came from the cloud endpoint.</p></div>
+        <button class="button primary live-button" id="live-check" type="button">Run live triage check <span>↗</span></button>
         <div class="live-result" id="live-result" aria-live="polite"><span class="result-dot"></span><span>Waiting for a live response.</span></div>
       </section>
 
