@@ -64,6 +64,27 @@ document.querySelectorAll('.filter').forEach(button => button.addEventListener('
 }));
 render();
 
+const replayDemo = document.querySelector('#replay-demo');
+const replayStatus = document.querySelector('#replay-status');
+const beforeDecision = document.querySelector('#before-decision');
+const afterDecision = document.querySelector('#after-decision');
+if (replayDemo && replayStatus && beforeDecision && afterDecision) {
+  const pause = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
+  replayDemo.addEventListener('click', async () => {
+    replayDemo.disabled = true;
+    beforeDecision.textContent = '…';
+    afterDecision.textContent = '…';
+    replayStatus.innerHTML = '<span class="result-dot pending"></span><span>Watcher reads the raw command string…</span>';
+    await pause(650);
+    beforeDecision.textContent = 'ALLOW';
+    replayStatus.innerHTML = '<span class="result-dot live"></span><span><b>Before fix:</b> safe-looking prefix returns ALLOW.</span>';
+    await pause(850);
+    afterDecision.textContent = 'TRIAGE';
+    replayStatus.innerHTML = '<span class="result-dot live"></span><span><b>After fix:</b> shell-aware guard exposes the mutation → TRIAGE.</span>';
+    replayDemo.disabled = false;
+  });
+}
+
 const liveCheck = document.querySelector('#live-check');
 const liveResult = document.querySelector('#live-result');
 if (liveCheck && liveResult) {
@@ -82,7 +103,7 @@ if (liveCheck && liveResult) {
       liveResult.innerHTML = `<span class="result-dot error"></span><span><b>Live check unavailable.</b> ${error.message}</span>`;
     } finally {
       liveCheck.disabled = false;
-      liveCheck.innerHTML = 'Run live check <span>↗</span>';
+      liveCheck.innerHTML = 'Run live triage check <span>↗</span>';
     }
   });
 }
