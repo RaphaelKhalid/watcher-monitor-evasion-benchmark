@@ -12,3 +12,4 @@
 .score-note{margin-top:12px;color:#e6c6a8;font:11px/1.5 'IBM Plex Mono',monospace}.score-note b{color:#ffc078}
 .demo-home:before,.demo-home:after,.findings-short:before,.findings-short:after{display:none}body:before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(135deg,rgba(184,73,22,.28),rgba(69,22,8,.14)),url('./DSC_0315-3840.webp');background-size:cover;background-position:center 39%;filter:sepia(.62) saturate(1.72) contrast(1.08);opacity:.68}body:after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(38,15,7,.48),rgba(29,14,9,.34) 45%,rgba(25,11,7,.68))}.findings-short .hero h1,.findings-short .lede{color:var(--ink)}
 .demo-home{background:var(--bg)}
+.demo-home:before,.demo-home:after{display:block}
