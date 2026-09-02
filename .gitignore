@@ -1,0 +1,7 @@
+03-build/__pycache__/
+03-build/.pytest_cache/
+*.pyc
+.vercel/
+.env
+.env.*
+!.env.example
