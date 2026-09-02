@@ -60,7 +60,7 @@
       </section>
 
       <section class="live-panel">
-        <div><div class="eyebrow">LIVE API CHECK</div><h2>Check the same record with Watcher.</h2><p>This sends one inert record to the cloud triage endpoint. It is separate from the local deterministic decision above.</p></div>
+        <div><div class="eyebrow">LIVE API CHECK</div><h2>Check the same record with Watcher.</h2><p>The six <code>ALLOW</code> results came from the local policy shipped with the Watcher version we tested. This cloud endpoint is a different triage path and did not reproduce that route.</p><div class="score-note"><b>Score scale:</b> 1 means lower concern; 10 means higher concern. A triage score is not an allow/deny result.</div></div>
         <button class="button primary live-button" id="live-check" type="button">Run live triage check <span>↗</span></button>
         <div class="live-result" id="live-result" aria-live="polite"><span class="result-dot"></span><span>Waiting for a live response.</span></div>
       </section>
