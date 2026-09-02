@@ -72,7 +72,7 @@ if (liveCheck && liveResult) {
     liveCheck.innerHTML = 'Contacting Watcher <span>…</span>';
     liveResult.innerHTML = '<span class="result-dot pending"></span><span>Sending the fixed trajectory to Watcher…</span>';
     try {
-      const response = await fetch('./api/live-demo', { method: 'GET', headers: { Accept: 'application/json' } });
+      const response = await fetch(`./api/live-demo?run=${Date.now()}`, { method: 'GET', headers: { Accept: 'application/json' } });
       const payload = await response.json();
       if (!response.ok) throw new Error(typeof payload.message === 'string' ? payload.message : JSON.stringify(payload.message || 'Watcher returned an error'));
       const grade = payload.grades?.[0];
