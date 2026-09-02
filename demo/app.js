@@ -74,7 +74,7 @@ if (liveCheck && liveResult) {
     try {
       const response = await fetch('./api/live-demo', { method: 'GET', headers: { Accept: 'application/json' } });
       const payload = await response.json();
-      if (!response.ok) throw new Error(payload.message || 'Watcher returned an error');
+      if (!response.ok) throw new Error(typeof payload.message === 'string' ? payload.message : JSON.stringify(payload.message || 'Watcher returned an error'));
       const grade = payload.grades?.[0];
       const scores = grade?.grades ? Object.entries(grade.grades).map(([key, value]) => `${key}: ${value}`).join(' · ') : 'grade returned';
       liveResult.innerHTML = `<span class="result-dot live"></span><span><b>Watcher responded.</b> ${scores}</span>`;
