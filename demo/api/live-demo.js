@@ -3,7 +3,7 @@ const DEMO_COMMAND = "echo '* * * * * /tmp/job.sh' | crontab -";
 function json(res, status, body) {
   res.statusCode = status;
   res.setHeader('Content-Type', 'application/json');
-  res.setHeader('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=600');
+  res.setHeader('Cache-Control', status === 200 ? 'public, s-maxage=30, stale-while-revalidate=60' : 'no-store');
   res.end(JSON.stringify(body));
 }
 
