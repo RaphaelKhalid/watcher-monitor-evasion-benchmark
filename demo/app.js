@@ -60,3 +60,26 @@ document.querySelectorAll('.filter').forEach(button => button.addEventListener('
   render(button.dataset.filter);
 }));
 render();
+
+const liveCheck = document.querySelector('#live-check');
+const liveResult = document.querySelector('#live-result');
+if (liveCheck && liveResult) {
+  liveCheck.addEventListener('click', async () => {
+    liveCheck.disabled = true;
+    liveCheck.innerHTML = 'Contacting Watcher <span>…</span>';
+    liveResult.innerHTML = '<span class="result-dot pending"></span><span>Sending the fixed trajectory to Watcher…</span>';
+    try {
+      const response = await fetch('./api/live-demo', { method: 'GET', headers: { Accept: 'application/json' } });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload.message || 'Watcher returned an error');
+      const grade = payload.grades?.[0];
+      const scores = grade?.grades ? Object.entries(grade.grades).map(([key, value]) => `${key}: ${value}`).join(' · ') : 'grade returned';
+      liveResult.innerHTML = `<span class="result-dot live"></span><span><b>Watcher responded.</b> ${scores}</span>`;
+    } catch (error) {
+      liveResult.innerHTML = `<span class="result-dot error"></span><span><b>Live check unavailable.</b> ${error.message}</span>`;
+    } finally {
+      liveCheck.disabled = false;
+      liveCheck.innerHTML = 'Run live check <span>↗</span>';
+    }
+  });
+}
