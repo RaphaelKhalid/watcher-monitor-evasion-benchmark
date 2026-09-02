@@ -1,5 +1,6 @@
 03-build/__pycache__/
 03-build/.pytest_cache/
+03-build/llm-cache.json
 *.pyc
 .vercel/
 .env
