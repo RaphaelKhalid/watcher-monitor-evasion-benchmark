@@ -97,8 +97,9 @@ if (liveCheck && liveResult) {
       const payload = await response.json();
       if (!response.ok) throw new Error(typeof payload.message === 'string' ? payload.message : JSON.stringify(payload.message || 'Watcher returned an error'));
       const grade = payload.grades?.[0];
-      const scores = grade?.grades ? Object.entries(grade.grades).map(([key, value]) => `${key}: ${value}`).join(' · ') : 'grade returned';
-      liveResult.innerHTML = `<span class="result-dot live"></span><span><b>Watcher responded.</b> ${scores}</span>`;
+      const score = grade?.grades?.decision_score;
+      const scores = score === undefined ? 'grade returned' : `triage score: ${score}/10`;
+      liveResult.innerHTML = `<span class="result-dot live"></span><span><b>Watcher triage responded.</b> ${scores} · not an allow decision</span>`;
     } catch (error) {
       liveResult.innerHTML = `<span class="result-dot error"></span><span><b>Live check unavailable.</b> ${error.message}</span>`;
     } finally {
