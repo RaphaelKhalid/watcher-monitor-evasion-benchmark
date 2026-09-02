@@ -34,7 +34,7 @@ module.exports = async function handler(req, res) {
   ]];
 
   try {
-    const response = await fetch('https://app.apolloresearch.ai/api/v1/grade', {
+    const response = await fetch('https://app.apolloresearch.ai/api/v1/monitors/triage/grade', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
