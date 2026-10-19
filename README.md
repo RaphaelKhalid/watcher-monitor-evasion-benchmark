@@ -83,7 +83,7 @@ This is evidence of specific first-match and anchoring behavior in the installed
 
 ## Validation and follow-up
 
-decisions.md records the corpus revisions, matched-rule observations, and kill-pass corrections. The benchmark includes test_benchmark.py for its classifier and summary logic.
+The benchmark includes test_benchmark.py for its classifier and summary logic.
 
 A separate local follow-up sent 40 triage-routed dangerous strings through a Watcher-shaped Luna-high prompt with a threshold of 6:
 
@@ -149,7 +149,6 @@ For the local LLM-shaped follow-up, inspect 03-build/llm_demo.py and the cached 
 - 03-build/llm-results.json — cached follow-up results and estimated cost.
 - 03-build/test_benchmark.py — offline tests.
 - 04-package/README.md — earlier reader-facing method notes.
-- decisions.md — experiment log, revisions, and kill-pass corrections.
 - demo/ — static public dashboard.
 - vercel.json — deployment configuration.
 
